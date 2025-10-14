@@ -1,4 +1,4 @@
-export const TASKS_DATA = [
+export const INITIAL_TASKS_DATA = [
   {
     id: 1,
     name: "Project Initiation & Setup",
@@ -44,3 +44,4 @@ export const TASKS_DATA = [
 export const START_DATE_REFERENCE = "2025-10-01";
 export const END_DATE_REFERENCE = "2025-10-31";
 export const PIXELS_PER_DAY = 50;
+export const INITIAL_PROJECT_NAME = "New Dev Project";
