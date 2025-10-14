@@ -1,16 +1,22 @@
-# React + Vite
+# Gantt Chart for Clayverest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+This project was developed as a technical assessment for Clayverest. It's a Gantt Chart that allow the user to monitor its current projects.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features Implemented
 
-## React Compiler
+- Component Architecture: Clean separation between data (mockData.js), presentation (TaskBar.jsx), and container logic (GanttChart.jsx).
+- Dynamic Data Flow: The task list and project name are managed in the top-level state (App.jsx), allowing for real-time updates.
+- Modals: Implemented two distinct modal types for user interaction:
+  - A Task Details Modal to view information when clicking on a task bar.
+  - An Add Task Modal with a form to create and add new tasks to the chart.
+- Sidebar: A simple sidebar to demonstrate state lifting by allowing users to change the project title.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Next Features / Future Development
 
-## Expanding the ESLint configuration
+The following features are planned to expand the utility of the Gantt chart and would be the next steps in development:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Task Modification
+- Task Deletion
+- Improve CSS to match Clayverest app
