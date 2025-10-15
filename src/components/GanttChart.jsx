@@ -3,14 +3,11 @@ import TaskBar from "./TaskBar";
 import ModalTaskDetails from "./ModalTaskDetails";
 import AddRow from "./AddRow";
 import AddTaskModal from "./AddTaskModal";
+import { START_DATE_REFERENCE, END_DATE_REFERENCE } from "../data/mockData";
 
-const GanttChart = ({
-  tasks,
-  startDateRef,
-  endDateRef,
-  pixelsPerDay,
-  onAddTask,
-}) => {
+const PIXELS_PER_DAY = 50;
+
+const GanttChart = ({ tasks, onAddTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isTaskDetailsModalOpen, setIsTaskDetailsModalOpen] = useState(false);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
@@ -37,10 +34,16 @@ const GanttChart = ({
       days.push(currentDate.getDate());
       currentDate.setDate(currentDate.getDate() + 1);
     }
+
     return days;
   };
-  const allDayNumbers = generateDayNumbers(startDateRef, endDateRef);
-  const totalWidth = allDayNumbers.length * pixelsPerDay;
+
+  const allDayNumbers = generateDayNumbers(
+    START_DATE_REFERENCE,
+    END_DATE_REFERENCE
+  );
+
+  const totalWidth = allDayNumbers.length * PIXELS_PER_DAY;
 
   return (
     <>
@@ -71,7 +74,7 @@ const GanttChart = ({
                 <div
                   key={index}
                   className="flex flex-col justify-center items-center border-r border-gray-200 text-xs text-gray-500"
-                  style={{ width: `${pixelsPerDay}px` }}
+                  style={{ width: `${PIXELS_PER_DAY}px` }}
                 >
                   {dayNum}
                 </div>
@@ -84,7 +87,7 @@ const GanttChart = ({
                   <div
                     key={index}
                     className="border-r border-dashed border-gray-100"
-                    style={{ width: `${pixelsPerDay}px` }}
+                    style={{ width: `${PIXELS_PER_DAY}px` }}
                   />
                 ))}
               </div>
@@ -92,12 +95,12 @@ const GanttChart = ({
               {tasks.map((task) => (
                 <div
                   key={task.id}
-                  className="h-10 border-b border-gray-100 relative"
+                  className="h-10 border-b border-gray-100 flex items-center"
                 >
                   <TaskBar
                     task={task}
-                    startDateRef={startDateRef}
-                    pixelsPerDay={pixelsPerDay}
+                    startDateRef={START_DATE_REFERENCE}
+                    pixelsPerDay={PIXELS_PER_DAY}
                     onTaskClick={openTaskDetailsModal}
                   />
                 </div>

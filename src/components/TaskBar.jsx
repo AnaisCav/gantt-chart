@@ -2,23 +2,21 @@ const TaskBar = ({ task, startDateRef, pixelsPerDay, onTaskClick }) => {
   const oneDayInMS = 1000 * 60 * 60 * 24;
 
   const getDaysDifference = (date1, date2) => {
-    const diffTime = new Date(date1).getTime() - new Date(date2).getTime();
-    return Math.round(diffTime / oneDayInMS);
+    const diffTimeInMS = new Date(date1).getTime() - new Date(date2).getTime();
+    return Math.round(diffTimeInMS / oneDayInMS);
   };
 
-  const offsetDays = getDaysDifference(task.start, startDateRef);
-  const left = offsetDays * pixelsPerDay;
+  const daysFromStartRef = getDaysDifference(task.start, startDateRef);
+  const taskDurationDays = getDaysDifference(task.end, task.start) + 1;
 
-  const durationDays = getDaysDifference(task.end, task.start) + 1;
-  const width = durationDays * pixelsPerDay;
-
+  const left = daysFromStartRef * pixelsPerDay;
+  const width = taskDurationDays * pixelsPerDay;
   const progressWidth = (task.progress / 100) * width;
 
   return (
     <div
       className="absolute h-6 rounded-md shadow-lg cursor-pointer transition-all duration-100 hover:opacity-100 opacity-90"
       style={{ left: `${left}px`, width: `${width}px` }}
-      title={`${task.name} (${task.start} - ${task.end}) - ${task.progress}%`}
       onClick={() => onTaskClick(task)}
     >
       <div
